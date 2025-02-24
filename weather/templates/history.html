@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Query History</title>
+</head>
+<body>
+    <h1>Query History</h1>
+    <table border="1" cellspacing="0" cellpadding="5">
+        <thead>
+            <tr>
+                <th>City</th>
+                <th>Temperature (°C)</th>
+                <th>Description</th>
+                <th>Query Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for query in queries %}
+                <tr>
+                    <td>{{ query.city_name }}</td>
+                    <td>{{ query.temperature }}</td>
+                    <td>{{ query.description }}</td>
+                    <td>{{ query.query_time }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'weather_query' %}">New Query</a>
+</body>
+</html>

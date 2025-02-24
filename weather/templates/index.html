@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Query</title>
+</head>
+<body>
+    <h1>Weather Query</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather %}
+        <h2>Weather in {{ weather.city }}</h2>
+        <p>Temperature: {{ weather.temperature }} °C</p>
+        <p>Description: {{ weather.description }}</p>
+    {% elif error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <a href="{% url 'query_history' %}">Query History</a>
+</body>
+</html>
